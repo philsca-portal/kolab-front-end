@@ -1,11 +1,15 @@
+import { Suspense } from "react"
+
 export default function authLayout({
     children
 }: {
     children: React.ReactNode
-}){
-    return(
+}) {
+    return (
         <div className="h-full w-full">
-            {children}
+            <Suspense>
+                {children}
+            </Suspense>
         </div>
     )
 }
