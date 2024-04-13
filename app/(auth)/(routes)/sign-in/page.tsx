@@ -17,10 +17,10 @@ import Loader from "@/components/ui/Loader";
 
 const SignIn = () => {
 
-    const searchParams = useSearchParams();
+    const searchParams = typeof window !== 'undefined' ? useSearchParams() : null;
 
     useEffect(() => {
-        if (searchParams.get("redirected")) {
+        if (searchParams && searchParams.get("redirected")) {
             toast.error('your Email already exists.');
         }
     }, [searchParams]);
