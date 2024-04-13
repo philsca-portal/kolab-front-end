@@ -46,7 +46,7 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({
                   )}>
               </FormField>
               :
-              <Image className="rounded-full object-cover object-center ring-1 ring-offset-1 ring-black" src={`${profileData.image ? profileData.image : 'https://gdurl.com/0pAF'}`} alt="" fill sizes="icon" quality={100} priority />
+              <Image className="rounded-full object-cover object-center ring-1 ring-offset-1 ring-black" src={profileData.image ? profileData.image : 'https://gdurl.com/0pAF'} alt="" fill sizes="icon" quality={100} priority />
               }
             </div>
           </div>
