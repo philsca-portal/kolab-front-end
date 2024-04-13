@@ -1,0 +1,223 @@
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String()
+  access_token      String? @db.String()
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String()
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String    @id @default(cuid())
+  sessionToken String    @unique
+  userId       String
+  expires      DateTime
+  OS           String?
+  browserUsed  String?
+  IpAddress    String?
+  date         DateTime?
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Setting {
+  userId            String  @unique
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notificationSound String?
+  muteDuration      String?
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String?
+  hashedPassword String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String? @db.Char(350)
+  bio            String?
+  skill          String?
+  accounts       Account[]
+  sessions       Session[]
+  settings       Setting[]
+}
+
+model Notification {
+  id               String           @id @default(cuid())
+  sendersId        String?
+  teamId           String?
+  invitationStatus String?
+  userId           String
+  type             NotificationType
+  content          String
+  status           StatusType       @default(UNREAD)
+  createdAt        DateTime         @default(now())
+}
+
+enum NotificationType {
+  TASK_ASSIGNED
+  INVITATION
+  GENERAL
+}
+
+enum StatusType {
+  READ
+  UNREAD
+}
+
+model Team {
+  id        String    @id @default(cuid())
+  userId    String
+  teamName  String
+  teamIcon  String
+  members   Member[]
+  meetings  Meeting[]
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Project {
+  id          String @id @default(cuid())
+  TeamId      String
+  projectName String
+  team        Team   @relation(fields: [TeamId], references: [id], onDelete: Cascade)
+  tasks       Task[]
+}
+
+model Task {
+  id          String        @id @default(cuid())
+  projectId   String
+  assignedTo  String?
+  title       String
+  description String?
+  tag         String?
+  status      TaskStatus    @default(PENDING)
+  priority    TaskPriority  @default(NORMAL)
+  dueDate     DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  messages    TaskMessage[]
+  attachments Attachment[]
+  project     Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model TaskMessage {
+  id         String   @id @default(cuid())
+  taskId     String
+  senderId   String
+  message    String
+  adminStatus     StatusType @default(UNREAD)
+  assigneeStatus  StatusType @default(UNREAD)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  task       Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+}
+
+model Attachment {
+  id        String   @id @default(cuid())
+  taskId    String
+  fileName  String
+  url       String @db.Char(350)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+}
+
+model ArchivedTask {
+  id          String       @id @default(cuid())
+  projectId   String
+  assignedTo  String?
+  title       String
+  description String?
+  tag         String?
+  status      TaskStatus   
+  priority    TaskPriority 
+  dueDate     DateTime?
+  createdAt   DateTime     
+  updatedAt   DateTime     
+}
+
+model CompletedTask {
+  id          String       @id @default(cuid())
+  taskId      String
+  projectId   String
+  assignedTo  String?
+  title       String
+  description String?
+  tag         String?
+  status      TaskStatus   
+  priority    TaskPriority 
+  dueDate     DateTime?
+  createdAt   DateTime     
+  updatedAt   DateTime  
+}
+
+enum TaskStatus {
+  PENDING
+  ON_GOING
+  IN_REVIEW
+  COMPLETED
+  EXPIRED
+}
+
+enum TaskPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+model Member {
+  id     String  @id @default(cuid())
+  TeamId String
+  name   String
+  email  String
+  image  String
+  status String?
+  team   Team    @relation(fields: [TeamId], references: [id], onDelete: Cascade)
+}
+
+model Meeting {
+  id           String        @id @default(cuid())
+  TeamId       String
+  meetingName  String
+  description  String
+  startDate    DateTime
+  endDate      DateTime
+  createdAt    DateTime      @default(now())
+  invitedUsers InvitedUser[]
+  team         Team          @relation(fields: [TeamId], references: [id], onDelete: Cascade)
+}
+
+model InvitedUser {
+  id        String  @id @default(cuid())
+  meetingId String
+  email     String
+  meeting   Meeting @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}

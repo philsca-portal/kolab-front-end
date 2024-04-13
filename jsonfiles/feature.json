@@ -1,0 +1,48 @@
+{
+    "slides":[
+        {
+            "firstWord": "Spaces",
+            "secondWord": "that Spark",
+            "thirdWord": "Collaboration.",
+            "icon": "https://gdurl.com/5wQO",
+            "title": "Collaborative Workspaces",
+            "firstDescription": "Showcase a vibrant workspace with team members collaborating on tasks.",
+            "secondDescription": "Illustrate real-time collaboration, file sharing, and team interaction.",
+            "firstImage": "https://gdurl.com/VHip",
+            "secondImage": "https://gdurl.com/VHip"
+        },
+        {
+            "firstWord": "Simplify",
+            "secondWord": "Task Management",
+            "thirdWord": "Now.",
+            "icon": "https://gdurl.com/jOSS",
+            "title": "Intuitive Task Tracking",
+            "firstDescription": "Display an elegant task board with tasks and progress indicators.",
+            "secondDescription": "Highlight easy task creation, deadline tracking, and progress visualization.",
+            "firstImage": "https://gdurl.com/VHip",
+            "secondImage": "https://gdurl.com/VHip"
+        },
+        {
+            "firstWord": "Connect",
+            "secondWord": "and Conquer",
+            "thirdWord": "Together.",
+            "icon": "https://gdurl.com/9R77",
+            "title": "Integrated Communication",
+            "firstDescription": "Show a communication hub with messaging, notifications, and updates.",
+            "secondDescription": "Emphasize seamless team communication within the platform.",
+            "firstImage": "https://gdurl.com/VHip",
+            "secondImage": "https://gdurl.com/VHip"
+        },
+        {
+            "firstWord": "Insights",
+            "secondWord": "at a",
+            "thirdWord": "Glance.",
+            "icon": "https://gdurl.com/otJG",
+            "title": "Efficient Dashboard",
+            "firstDescription": "Create an aesthetically pleasing dashboard with charts and task metrics.",
+            "secondDescription": "Showcase analytics, project summaries, and personalized dashboards.",
+            "firstImage": "https://gdurl.com/VHip",
+            "secondImage": "https://gdurl.com/VHip"
+        }
+    ]
+}

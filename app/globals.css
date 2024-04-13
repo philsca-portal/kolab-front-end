@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body{
+  scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+.loader {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+}
+
+.loader div {
+  width: 8%;
+  height: 24%;
+  background: rgb(128, 128, 128);
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  opacity: 0;
+  border-radius: 50px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  animation: fade458 1s linear infinite;
+}
+
+@keyframes fade458 {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.25;
+  }
+}
+
+.loader .bar1 {
+  transform: rotate(0deg) translate(0, -130%);
+  animation-delay: 0s;
+}
+
+.loader .bar2 {
+  transform: rotate(30deg) translate(0, -130%);
+  animation-delay: -1.1s;
+}
+
+.loader .bar3 {
+  transform: rotate(60deg) translate(0, -130%);
+  animation-delay: -1s;
+}
+
+.loader .bar4 {
+  transform: rotate(90deg) translate(0, -130%);
+  animation-delay: -0.9s;
+}
+
+.loader .bar5 {
+  transform: rotate(120deg) translate(0, -130%);
+  animation-delay: -0.8s;
+}
+
+.loader .bar6 {
+  transform: rotate(150deg) translate(0, -130%);
+  animation-delay: -0.7s;
+}
+
+.loader .bar7 {
+  transform: rotate(180deg) translate(0, -130%);
+  animation-delay: -0.6s;
+}
+
+.loader .bar8 {
+  transform: rotate(210deg) translate(0, -130%);
+  animation-delay: -0.5s;
+}
+
+.loader .bar9 {
+  transform: rotate(240deg) translate(0, -130%);
+  animation-delay: -0.4s;
+}
+
+.loader .bar10 {
+  transform: rotate(270deg) translate(0, -130%);
+  animation-delay: -0.3s;
+}
+
+.loader .bar11 {
+  transform: rotate(300deg) translate(0, -130%);
+  animation-delay: -0.2s;
+}
+
+.loader .bar12 {
+  transform: rotate(330deg) translate(0, -130%);
+  animation-delay: -0.1s;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.main-section-light {
+  background-color: #e5e5f7;
+  opacity: 0.1;
+  background-image: linear-gradient(#000000 1px, transparent 1px),
+    linear-gradient(90deg, #000000 1px, transparent 1px),
+    linear-gradient(#000000 0.5px, transparent 0.5px),
+    linear-gradient(90deg, #000000 0.5px, #e5e5f7 0.5px);
+  background-size: 25px 25px, 25px 25px, 5px 5px, 5px 5px;
+  background-position: -1px -1px, -1px -1px, -0.5px -0.5px, -0.5px -0.5px;
+}
+
+.main-section-dark{
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0.1;
+  background-image:  linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px), linear-gradient(#ffffff 0.5px, transparent 0.5px), linear-gradient(90deg, #ffffff 0.5px, rgba(255, 255, 255, 0) 0.5px);
+  background-size: 25px 25px, 25px 25px, 5px 5px, 5px 5px;
+  background-position: -1px -1px, -1px -1px, -0.5px -0.5px, -0.5px -0.5px;
+}
+
+.green-black-stroke{
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 2px;
+  color: #5B7553;
+}
+
+.green-white-stroke{
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 1px;
+  color: #5B7553;
+}
+
+.green-gradient{
+  background: rgb(91,117,83);
+  background: -moz-linear-gradient(117deg, rgba(91,117,83,0.25) 0%, rgba(255,255,255,0.5018382352941176) 50%, rgba(91,117,83,0.25) 100%);
+  background: -webkit-linear-gradient(117deg, rgba(91,117,83,0.25) 0%, rgba(255,255,255,0.5018382352941176) 50%, rgba(91,117,83,0.25) 100%);
+  background: linear-gradient(117deg, rgba(91,117,83,0.25) 0%, rgba(255,255,255,0.5018382352941176) 50%, rgba(91,117,83,0.25) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5b7553",endColorstr="#5b7553",GradientType=1);
+}
+
+.green-gradient-dark{
+  background: rgb(91,117,83);
+  background: -moz-linear-gradient(117deg, rgba(91,117,83,0.25) 0%, rgba(2,8,23,1) 50%, rgba(91,117,83,0.25) 100%);
+  background: -webkit-linear-gradient(117deg, rgba(91,117,83,0.25) 0%, rgba(2,8,23,1) 50%, rgba(91,117,83,0.25) 100%);
+  background: linear-gradient(117deg, rgba(91,117,83,0.25) 0%, rgba(2,8,23,1) 50%, rgba(91,117,83,0.25) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5b7553",endColorstr="#5b7553",GradientType=1);
+  }
+
+  .startDate::-webkit-inner-spin-button,
+  .startDate::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+
+  
