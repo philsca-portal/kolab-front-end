@@ -64,8 +64,6 @@ const Profile: React.FC<ProfileProps> = ({
 
     }, [session?.user.userId]);
 
-    console.log(activityData);
-
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
         try {
             setLoading(true);

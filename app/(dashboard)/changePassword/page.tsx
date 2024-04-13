@@ -10,8 +10,6 @@ export default async function Page() {
     const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/changePassword`, {
         userId: session?.user.userId
     });
-    
-    console.log(response.data);
 
     if(response.data.success === true){
         return (

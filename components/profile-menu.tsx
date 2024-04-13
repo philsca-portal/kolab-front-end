@@ -32,7 +32,7 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
         <DropdownMenuTrigger asChild>
             <div className="flex items-center space-x-2 cursor-pointer">
                 <div className="relative aspect-square h-8 w-8">
-                    <Image className="rounded-full hover:scale-105 transition object-cover object-center ring-1 ring-offset-1 ring-black" src={`${profileData.image ? profileData.image : 'https://gdurl.com/0pAF'}`} alt="" fill sizes="icon" priority />
+                    <Image className="rounded-full hover:scale-105 transition object-cover object-center ring-1 ring-offset-1 ring-black" src={session?.user.image? session?.user.image : ''} alt="" fill sizes="icon" priority />
                 </div>
                 <div className="flex flex-col">
                     <h1 className="text-[11px] hover:underline font-bold transition">{session?.user.name}</h1>
