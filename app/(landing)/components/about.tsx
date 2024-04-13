@@ -4,7 +4,20 @@ import Image from "next/image";
 import ExplainAbout from "./explain-about";
 import { useInView } from "react-intersection-observer";
 
+import lowerleftlight from "@/public/images/Light-pictures/lower-left-light.png";
+import lowerrightlight from "@/public/images/Light-pictures/lower-right-light.png";
+import upperleftlight from "@/public/images/Light-pictures/upper-left-light.png";
+import upperrightlight from "@/public/images/Light-pictures/upper-right-light.png";
+
+import lowerleftdark from "@/public/images/Dark-pictures/lower-left-dark.png";
+import lowerrightdark from "@/public/images/Dark-pictures/lower-right-dark.png";
+import upperleftdark from "@/public/images/Dark-pictures/upper-left-dark.png";
+import upperrightdark from "@/public/images/Dark-pictures/upper-right-dark.png";
+import { useTheme } from "next-themes";
+
 const About = () => {
+
+    const { theme } = useTheme();
 
     const [firstImageRef, firstImageInView] = useInView({
         triggerOnce: true
@@ -33,16 +46,16 @@ const About = () => {
             </div>
             <div id="purpose" className="my-[8rem] sm:h-[45rem] flex justify-center items-center">
                 <div ref={firstImageRef} className={`${firstImageInView ? 'animate-opacity-translate-from-left-transition-mobile sm:animate-opacity-translate-from-left-transition-small md:animate-opacity-translate-from-left-transition-medium lg:animate-opacity-translate-from-left-transition-large' : ''} absolute z-10 aspect-square h-[90px] w-[150px] -translate-x-[6.5rem] translate-y-[8rem] sm:h-[125px] sm:w-[200px] md:h-[200px] sm:-translate-x-[12rem] sm:translate-y-[11rem] md:w-[300px] lg:h-[300px] lg:w-[400px] md:-translate-x-[19rem] md:translate-y-[15rem] lg:-translate-x-[26rem] lg:translate-y-[18rem]`}>
-                    <Image className="object-cover object-center rounded-2xl shadow-md shadow-[#5B7553]" src={'https://gdurl.com/VHip'} alt="" fill sizes="icon" />
+                    <Image className="object-cover object-center rounded-2xl shadow-md shadow-[#5B7553]" src={theme === 'dark'? lowerleftdark : lowerleftlight } alt="" fill sizes="icon" />
                 </div>
                 <div ref={thirdImageRef} className={`${thirdImageInView ? 'animate-opacity-translate-from-top-transition-mobile sm:animate-opacity-translate-from-top-transition-small md:animate-opacity-translate-from-top-transition-medium lg:animate-opacity-translate-from-top-transition-large' : ''} absolute z-10 aspect-square h-[75px] w-[125px] -translate-x-10 -translate-y-28 sm:h-[100px] sm:w-[150px] sm:-translate-x-12 sm:-translate-y-40 md:h-[150px] md:w-[250px] md:-translate-x-16 md:-translate-y-56 lg:h-[250px] lg:w-[350px] lg:-translate-x-20 lg:-translate-y-72 shadow-2xl`}>
-                    <Image className="object-cover object-center rounded-2xl shadow-md shadow-[#5B7553]" src={'https://gdurl.com/VHip'} alt="" fill sizes="icon" />
+                    <Image className="object-cover object-center rounded-2xl shadow-md shadow-[#5B7553]" src={theme === 'dark'? upperleftdark : upperleftlight } alt="" fill sizes="icon" />
                 </div>
                 <div ref={fourthImageRef} className={`${fourthImageInView ? 'animate-opacity-translate-from-bottom-transition-mobile sm:animate-opacity-translate-from-bottom-transition-small md:animate-opacity-translate-from-bottom-transition-medium lg:animate-opacity-translate-from-bottom-transition-large' : ''} absolute z-10 aspect-square h-[100px] w-[170px] translate-x-[6rem] translate-y-[6rem] sm:h-[175px] sm:w-[275px] sm:translate-x-[10rem] sm:translate-y-[7rem] md:h-[275px] md:w-[375px] md:translate-x-[13rem] md:translate-y-[10rem] lg:h-[375px] lg:w-[475px] lg:translate-x-[15rem] lg:translate-y-[12rem] shadow-2xl`}>
-                    <Image className="object-cover object-center rounded-2xl shadow-md shadow-[#5B7553]" src={'https://gdurl.com/VHip'} alt="" fill sizes="icon" />
+                    <Image className="object-cover object-center rounded-2xl shadow-md shadow-[#5B7553]" src={theme === 'dark'? lowerrightdark : lowerrightlight } alt="" fill sizes="icon" />
                 </div>   
                 <div ref={secondImageRef} className={`${secondImageInView ? 'animate-opacity-translate-from-right-transition-mobile sm:animate-opacity-translate-from-right-transition-small md:animate-opacity-translate-from-right-transition-medium lg:animate-opacity-translate-from-right-transition-large' : ''} absolute z-10 aspect-square h-[65px] w-[110px] translate-x-[7.5rem] -translate-y-[6rem] sm:h-[100px] sm:w-[150px] sm:translate-x-[14rem] sm:-translate-y-[9rem] md:h-[125px] md:w-[200px] md:translate-x-[18rem] md:-translate-y-[13rem] lg:h-[175px] lg:w-[275px] lg:translate-x-[24rem] lg:-translate-y-[13rem] shadow-2xl`}>
-                    <Image className="object-cover object-center rounded-2xl shadow-md shadow-[#5B7553]" src={'https://gdurl.com/VHip'} alt="" fill sizes="icon" />
+                    <Image className="object-cover object-center rounded-2xl shadow-md shadow-[#5B7553]" src={theme === 'dark'? upperrightdark : upperrightlight } alt="" fill sizes="icon" />
                 </div> 
                 <div ref={browserRef} className={`${browserInView ? 'animate-opacity-scale-transition' : ''} relative aspect-square h-[15rem] w-[20rem] sm:h-3/6 sm:w-4/6 md:h-4/6 md:w-4/6 lg:h-5/6 lg:w-4/6`}>
                     <div className="flex flex-col h-full w-full">
